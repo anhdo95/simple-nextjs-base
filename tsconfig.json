@@ -16,7 +16,24 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["./*"],
+      "@components/*": ["./components/*"],
+
+      "@interfaces": ["./shared/interfaces/"],
+      "@interfaces/*": ["./shared/interfaces/*"],
+
+      "@enums": ["./shared/enums/"],
+      "@enums/*": ["./shared/enums/*"],
+
+      "@constants": ["./shared/constants/"],
+      "@constants/*": ["./shared/constants/*"],
+
+      "@utils": ["./shared/utils/"],
+      "@utils/*": ["./shared/utils/*"],
+    }
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
