@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import Link from "next/link";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 
-import { getUserProfile } from "@store/user";
-import Layout from "@components/Layout";
+import { getUserProfile } from '@store/user';
+import Layout from '@components/Layout';
 
 const IndexPage = () => {
   const dispatch = useDispatch();

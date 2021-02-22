@@ -1,10 +1,10 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.NODE_ENV === 'development';
 
 const instance = axios.create({
   timeout: 20000,
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL_API,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL_API
 });
 
 instance.interceptors.request.use(
@@ -13,7 +13,7 @@ instance.interceptors.request.use(
   },
   (error) => {
     if (isDev) {
-      console.error("API Request Error:", error);
+      console.error('API Request Error:', error);
     }
     return Promise.reject(error);
   }
@@ -25,7 +25,7 @@ instance.interceptors.response.use(
     if (response.data?.token?.accessToken) {
       instance.defaults.headers = {
         ...instance.defaults.headers,
-        Authorization: `Bearer ${response.data?.token?.accessToken}`,
+        Authorization: `Bearer ${response.data?.token?.accessToken}`
       };
     }
 
@@ -33,7 +33,7 @@ instance.interceptors.response.use(
   },
   (error) => {
     if (isDev) {
-      console.error("API Response Error:", error);
+      console.error('API Response Error:', error);
     }
     const errorMessage = error?.response?.data?.message;
     if (errorMessage) {
