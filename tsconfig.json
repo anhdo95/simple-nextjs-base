@@ -33,6 +33,9 @@
 
       "@utils": ["./shared/utils/"],
       "@utils/*": ["./shared/utils/*"],
+
+      "@types": ["./shared/types/"],
+      "@types/*": ["./shared/types/*"],
     }
   },
   "exclude": ["node_modules"],
