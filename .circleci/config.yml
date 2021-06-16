@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@4.5.0
+  heroku: circleci/heroku@1.2.6
 jobs:
   build:
     executor:
@@ -11,3 +12,7 @@ jobs:
       - node/install-packages:
           pkg-manager: 'yarn'
       - run: npm run test
+  heroku-deploy:
+    executor: heroku/default
+    steps:
+      - heroku/deploy-via-git
