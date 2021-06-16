@@ -6,11 +6,17 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "type-check": "tsc",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "test": "jest --bail"
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.5.0",
+    "@testing-library/dom": "7.31.2",
+    "@testing-library/jest-dom": "5.14.1",
+    "@testing-library/react": "11.2.7",
     "axios": "0.21.1",
+    "babel-jest": "27.0.2",
+    "jest": "27.0.4",
     "next": "latest",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -30,8 +36,42 @@
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "prettier": "2.2.1",
+    "redux-mock-store": "1.5.4",
     "sass": "1.32.8",
     "typescript": "4.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup-after-env.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@components/(.*)": "<rootDir>/components/$1",
+      "^@pages$": "<rootDir>/pages/index.ts",
+      "^@pages/(.*)": "<rootDir>/pages/$1",
+      "^@utils$": "<rootDir>/utils/index.ts",
+      "^@utils/(.*)": "<rootDir>/utils/$1",
+      "^@constants$": "<rootDir>/constants/index.ts",
+      "^@constants/(.*)": "<rootDir>/constants/$1",
+      "^@interfaces$": "<rootDir>/interfaces/index.ts",
+      "^@interfaces/(.*)": "<rootDir>/interfaces/$1",
+      "^@hooks/(.*)": "<rootDir>/hooks/$1",
+      "^@store$": "<rootDir>/store/index.ts",
+      "^@store/(.*)": "<rootDir>/store/$1",
+      "^@services/(.*)": "<rootDir>/services/$1",
+      "^@assets/(.*)": "<rootDir>/assets/$1",
+      "^@containers/(.*)": "<rootDir>/containers/$1",
+      "^@forms/(.*)": "<rootDir>/forms/$1",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.ts",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.ts"
+    }
+  }
 }
