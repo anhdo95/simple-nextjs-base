@@ -104,7 +104,7 @@ const SlickSlider = ({ items }: Props) => {
     items &&
     items.length && (
       <Slider className="sm:mx-20 md:px-4 pb-8 md:pb-0" {...settings}>
-        {items.map((item, index) => (
+        {items.map((_, index) => (
           <Link key={index} href="/">
             <a className="block px-2 focus:outline-none slick-slider__slide">{index}</a>
           </Link>
